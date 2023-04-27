@@ -11,11 +11,11 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
-     * Display a listing of the Libraries.
+     * Display a listing of the Books for API.
      */
     public function index()
     {
-        return BookResource::collection(Book::paginate(25));
+        return BookResource::collection(Book::all());
     }
 
 }

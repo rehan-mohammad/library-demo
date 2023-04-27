@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class BookResource extends JsonResource
 {
     /**
-     * Transform the resource into an array.
+     * Transform the book resource into an array.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
@@ -18,11 +18,11 @@ class BookResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'description' => $this->author,
-            'created_at' => (string) $this->created_at,
-            'updated_at' => (string) $this->updated_at,
-            'is_available' => (string) $this->is_available,
-            'user_id' => (string) $this->user_id,
-            'library_id' => (string) $this->library_id
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
+            'is_available' => $this->is_available,
+            'user_id' => $this->user_id,
+            'library_id' => $this->library_id
         ];
     }
 }

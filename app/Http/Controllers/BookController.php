@@ -99,13 +99,45 @@ class BookController extends Controller
 
         $book = Book::whereId($id);
 
+        //Check if the book is available
         if(!$book->is_available){
             return view('books.index')->withErrors(['Book is not available']);
         }
 
+        //Assign the book to the current user and set it as unavailable
         $book->user_id = $userId;
+        $book->is_available = 0;
         $book->save();
 
         return view('books.index')->with('success', 'Book has been borrowed');
+    }
+
+    
+    /**
+     * Return a book.
+     */
+    public function return($id)
+    {
+
+        $userId = Auth::id();
+
+        $book = Book::whereId($id);
+
+        //Check if the book is currently being borrowed
+        if($book->is_available){
+            return view('books.index')->withErrors(['Book is not currently being borrowed']);
+        }
+
+        //Check if the book is currently being borrowed by the current user
+        if($book->user_id != userId){
+            return view('books.index')->withErrors(['Book is currently being borrowed by another user']);
+        }
+
+        //Unassign the book from the current user and set it as available
+        $book->user_id = null;
+        $book->is_available = 1;
+        $book->save();
+
+        return view('books.index')->with('success', 'Book has been returned');
     }
 }
