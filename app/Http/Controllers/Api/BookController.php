@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     /**
-     * Display a listing of the Libraries.
+     * Display a listing of the Books for API.
      */
     public function index()
     {
