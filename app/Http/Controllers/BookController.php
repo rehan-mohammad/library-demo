@@ -104,8 +104,9 @@ class BookController extends Controller
             return view('books.index')->withErrors(['Book is not available']);
         }
 
-        //Assign the book to the current user
+        //Assign the book to the current user and set it as unavailable
         $book->user_id = $userId;
+        $book->is_available = 0;
         $book->save();
 
         return view('books.index')->with('success', 'Book has been borrowed');
