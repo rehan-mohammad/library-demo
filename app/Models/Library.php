@@ -27,4 +27,14 @@ class Library extends Model
     {
         return $this->hasMany(Book::class, 'library_id');
     }
+
+    /**
+     * Relation with users table
+     *
+     * @return object
+     */
+    public function users()
+    {
+        return $this->hasMany(User::class, 'library_id');
+    }
 }

@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('libraries', 'LibraryController');
+Route::resource('books', 'BookController');
+
+Route::post('books/{id}/borrow', 'BookController@borrow')->name('books.borrow');
