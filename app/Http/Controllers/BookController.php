@@ -99,6 +99,10 @@ class BookController extends Controller
 
         $book = Book::whereId($id);
 
+        if(!$book->is_available){
+            return view('books.index')->withErrors(['Book is not available']);
+        }
+
         $book->user_id = $userId;
         $book->save();
 
