@@ -45,6 +45,17 @@
                                 name="password_confirmation" required />
             </div>
 
+            <!-- Library -->
+            <div>
+                <label for="libraries">Select a Library:</label>
+
+                <select name="library_id" id="libraries">
+                    @foreach($libraries as $library)
+                        <option value="{{$library->id}}">{{$library->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
                     {{ __('Already registered?') }}
