@@ -23,9 +23,10 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
+//CRUD resource routes
 Route::resource('libraries', 'LibraryController');
 Route::resource('books', 'BookController');
 
+//Routes for books-specific actions (borrow,return)
 Route::post('books/{id}/borrow', 'BookController@borrow')->name('books.borrow');
-
 Route::post('books/{id}/return', 'BookController@return')->name('books.return');

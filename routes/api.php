@@ -18,4 +18,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+//API route for loading all books as JSON
 Route::apiResource('books', 'BookController');

@@ -21,6 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
+        //Loading all libraries to populate the dropdown on the register form
         $libraries = Library::all();
         return view('auth.register',compact('libraries'));
     }
