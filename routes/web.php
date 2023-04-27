@@ -21,3 +21,5 @@ Route::resource('libraries', 'LibraryController');
 Route::resource('books', 'BookController');
 
 Route::post('books/{id}/borrow', 'BookController@borrow')->name('books.borrow');
+
+Route::post('books/{id}/return', 'BookController@return')->name('books.return');
